@@ -49,6 +49,12 @@ DELETE localhost:9200/sample/product/sku-1
 GET localhost:9200/sample/product/sku-1
 ```
 
+## Bulk import
+```
+curl -XPOST 'localhost:9200/sample/_bulk?pretty' --data-binary @products-sample.json
+```
+
+
 ## Kibana:
 http://localhost:5601/app/kibana
 
