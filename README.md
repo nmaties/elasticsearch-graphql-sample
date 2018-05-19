@@ -50,6 +50,12 @@ GET localhost:9200/sample/product/sku-1
 ```
 
 ## Bulk import
+` products-sample.json`
+```
+{"index":{"_index":"sample","_type":"products","_id":"sku-1"}}
+{"name": "FirstProduct", "price": 100, "category": "CategoryOne", "status": "instock"}
+```
+Run command:
 ```
 curl -XPOST 'localhost:9200/sample/_bulk?pretty' --data-binary @products-sample.json
 ```
