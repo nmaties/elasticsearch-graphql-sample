@@ -3,26 +3,22 @@ A simple project using Elasticsearch and GraphQL.
 
 # Elastisearch
 
-## Install
+## Install:
 
 ### Commands:
-`make`
-or
-`docker-compose up`
+run `make` or `docker-compose up`
 
 ### Check status:
-Check if docker container is runnig:
-`docker ps`
-or
-`docker-compose top`
-or
-Check in browser:
+
+#### Check if docker container is running:
+run `docker ps` or `docker-compose top`
+
+#### Check in browser:
 `http://localhost:9200/`
 
 ## Rest API:
 
 ### Post
-
 ```
 POST localhost:9200/sample/product/sku-1
 {
@@ -53,7 +49,7 @@ DELETE localhost:9200/sample/product/sku-1
 GET localhost:9200/sample/product/sku-1
 ```
 
-## Kibana
+## Kibana:
 http://localhost:5601/app/kibana
 
 
