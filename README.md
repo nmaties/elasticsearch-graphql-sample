@@ -24,7 +24,7 @@ POST localhost:9200/sample/product/sku-1
 {
     "name" : "FirstProduct",
     "price" : 100,
-    "category" : "CategoryOne",
+    "categories" : "category-1",
     "status" : "on sale"
 }
 ```
@@ -40,8 +40,13 @@ POST localhost:9200/sample/product/sku-1/_update
 ```
 
 ### Delete
+Delete one single document
 ```
 DELETE localhost:9200/sample/product/sku-1
+```
+Delete all documents from an index
+```
+DELETE localhost:9200/sample
 ```
 
 ### Get
@@ -52,8 +57,8 @@ GET localhost:9200/sample/product/sku-1
 ## Bulk import
 ` products-sample.json`
 ```
-{"index":{"_index":"sample","_type":"products","_id":"sku-1"}}
-{"name": "FirstProduct", "price": 100, "category": "CategoryOne", "status": "instock"}
+{"index":{"_index":"sample","_type":"product","_id":"sku-1"}}
+{"name": "FirstProduct", "price": 100, "categories": ["category-1", "status": "instock"}
 ```
 Run command:
 ```
@@ -66,22 +71,22 @@ Simple query:
 ```
 GET localhost:9200/_search?q=FirstProduct
 GET localhost:9200/sample/_search?q=FirstProduct
-GET localhost:9200/sample/products/_search?q=FirstProduct
+GET localhost:9200/sample/product/_search?q=FirstProduct
 ```
 Query by fields:
 ```
-GET localhost:9200/sample/products/_search?q=category:(CategoryOne|CategorySecond) status:instock
+GET localhost:9200/sample/product/_search?q=categories:(category-1|category-2) status:instock
 ```
 
 ```
-POST localhost:9200/sample/products/_search
+POST localhost:9200/sample/product/_search
 {
     "query":{
         "bool": {
          "must" : [
              {
                  "match" : {
-                     "category" : "CategoryOne"
+                     "categories" : "category-1"
                  }
              },
              {
@@ -103,7 +108,7 @@ https://www.elastic.co/guide/en/elasticsearch/reference/5.5/query-dsl-query-stri
 
 ## Aggregations
 ```
-POST localhost:9200/sample/products/_search
+POST localhost:9200/sample/product/_search
 {
     "size":0,
     "aggs" : {
