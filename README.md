@@ -62,7 +62,7 @@ GET localhost:9200/sample/product/sku-1
 ```
 Run command:
 ```
-curl -XPOST 'localhost:9200/sample/_bulk?pretty' --data-binary @products-sample.json
+curl -XPOST 'localhost:9200/sample/_bulk?pretty' -H 'Content-Type: application/json' --data-binary @products-sample.json
 ```
 
 ## Query
